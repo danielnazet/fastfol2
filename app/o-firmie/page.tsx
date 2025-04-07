@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const timeline = [
 	{
@@ -126,170 +127,201 @@ const certificates = [
 
 export default function AboutUs() {
 	return (
-		<div className="min-h-screen bg-white pt-24 pb-12">
-			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-				{/* Main Content */}
-				<motion.div
-					initial={{ opacity: 0, y: 20 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.5 }}
-					className="text-center mb-16"
-				>
-					<h1 className="text-4xl md:text-5xl font-bold mb-8 text-[#27AAE1]">
-						O Firmie Fast-Fol
-					</h1>
-					<p className="text-lg text-[#27AAE1] max-w-4xl mx-auto">
-						Firma Fast-Fol już od 2002 r. realizuje swoją misję,
-						jaką jest produkcja najwyższej jakości ekologicznych
-						worków na śmieci. Zgodnie z zapotrzebowaniem klienta
-						wytwarzamy także regranulat LDPE, który również
-						dystrybuujemy.
-					</p>
-				</motion.div>
+		<div className="relative min-h-screen">
+			{/* Background Image */}
+			<div
+				className="fixed inset-0 -z-10"
+				style={{
+					backgroundImage:
+						'linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("/images/o-firmie-bg.webp")',
+					backgroundSize: "cover",
+					backgroundPosition: "center",
+					backgroundRepeat: "no-repeat",
+				}}
+			/>
 
-				{/* Company Values */}
-				<motion.div
-					initial={{ opacity: 0 }}
-					animate={{ opacity: 1 }}
-					transition={{ delay: 0.2 }}
-					className="bg-[#E8F5FF] rounded-2xl p-8 mb-16"
-				>
-					<h2 className="text-3xl font-bold mb-8 text-[#27AAE1]">
-						Nasza Misja
-					</h2>
-					<p className="text-lg text-[#27AAE1] mb-6">
-						Jako firma rodzinna stoimy murem za rozwojem technologii
-						naszych wyrobów i zdobywamy w tym kierunku niezbędne
-						doświadczenie. Chcemy nie tylko utrzymać najwyższy
-						standard naszych produktów, chcemy również iść w stronę
-						zrównoważonego rozwoju.
-					</p>
-					<p className="text-lg text-[#27AAE1]">
-						Dlatego produkujemy nasze wyroby głównie w oparciu o
-						surowce odtwarzalne, pozyskiwane z odpadów z tworzyw
-						sztucznych. Jako rodzinna firma działamy na zasadach
-						wspólnego dobra, wszyscy bierzemy osobistą
-						odpowiedzialność za to, co robimy i daje nam to ogromną
-						satysfakcję.
-					</p>
-				</motion.div>
+			<div className="relative pt-24 pb-12">
+				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+					{/* Main Content */}
+					<motion.div
+						initial={{ opacity: 0, y: 20 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.5 }}
+						className="text-center mb-16"
+					>
+						<h1 className="text-4xl md:text-5xl font-bold mb-8 text-white">
+							O Firmie Fast-Fol
+						</h1>
+						<p className="text-lg text-white max-w-4xl mx-auto">
+							Firma Fast-Fol już od 2002 r. realizuje swoją misję,
+							jaką jest produkcja najwyższej jakości ekologicznych
+							worków na śmieci. Zgodnie z zapotrzebowaniem klienta
+							wytwarzamy także regranulat LDPE, który również
+							dystrybuujemy.
+						</p>
+					</motion.div>
 
-				{/* Timeline */}
-				<div className="mb-16">
-					<h2 className="text-3xl font-bold mb-12 text-center text-[#27AAE1]">
-						Historia Fast-Fol
-					</h2>
-					<div className="space-y-8">
-						{timeline.map((event, index) => (
-							<motion.div
-								key={event.year}
-								initial={{
-									opacity: 0,
-									x: index % 2 === 0 ? -50 : 50,
-								}}
-								whileInView={{ opacity: 1, x: 0 }}
-								viewport={{ once: true }}
-								transition={{ delay: index * 0.1 }}
-								className="flex items-center gap-8"
-							>
-								<div
-									className={`w-32 text-right ${
-										index % 2 === 0 ? "order-1" : "order-3"
-									}`}
-								>
-									<span className="text-2xl font-bold text-[#27AAE1]">
-										{event.year}
-									</span>
-								</div>
-								<div className="order-2 w-4 h-4 rounded-full bg-[#27AAE1] relative">
-									<div className="absolute w-1 h-full bg-[#E8F5FF] left-1/2 transform -translate-x-1/2 -z-10"></div>
-								</div>
-								<div
-									className={`flex-1 ${
-										index % 2 === 0
-											? "order-3"
-											: "order-1 text-right"
-									}`}
-								>
-									<h3 className="text-xl font-semibold text-[#27AAE1] mb-2">
-										{event.title}
-									</h3>
-									<p className="text-[#27AAE1]">
-										{event.description}
+					{/* Company Values */}
+					<motion.div
+						initial={{ opacity: 0, y: 20 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true }}
+						transition={{ duration: 0.5 }}
+						className="relative overflow-hidden rounded-2xl mb-16"
+					>
+						{/* Gradient Background */}
+						<div className="absolute inset-0 bg-gradient-to-r from-[#27AAE1]/10 to-[#8BC53F]/10"></div>
+
+						{/* Content */}
+						<div className="relative p-8 md:p-12">
+							<div className="max-w-3xl mx-auto">
+								<h2 className="text-3xl md:text-4xl font-bold mb-6 text-white text-center">
+									Nasza Misja
+								</h2>
+								<div className="space-y-6">
+									<p className="text-lg text-white/90 leading-relaxed">
+										Jako firma rodzinna stoimy murem za
+										rozwojem technologii naszych wyrobów i
+										zdobywamy w tym kierunku niezbędne
+										doświadczenie. Chcemy nie tylko utrzymać
+										najwyższy standard naszych produktów,
+										chcemy również iść w stronę
+										zrównoważonego rozwoju.
+									</p>
+									<p className="text-lg text-white/90 leading-relaxed">
+										Dlatego produkujemy nasze wyroby głównie
+										w oparciu o surowce odtwarzalne,
+										pozyskiwane z odpadów z tworzyw
+										sztucznych. Jako rodzinna firma działamy
+										na zasadach wspólnego dobra, wszyscy
+										bierzemy osobistą odpowiedzialność za
+										to, co robimy i daje nam to ogromną
+										satysfakcję.
 									</p>
 								</div>
-							</motion.div>
-						))}
-					</div>
-				</div>
+							</div>
+						</div>
+					</motion.div>
 
-				{/* Eco Initiatives */}
-				<div className="mb-16">
-					<h2 className="text-3xl font-bold mb-12 text-center text-[#27AAE1]">
-						Inicjatywy Ekologiczne
-					</h2>
-					<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-						{ecoInitiatives.map((initiative, index) => (
-							<motion.div
-								key={initiative.title}
-								initial={{ opacity: 0, y: 20 }}
-								whileInView={{ opacity: 1, y: 0 }}
-								viewport={{ once: true }}
-								transition={{ delay: index * 0.1 }}
-								className="bg-[#E8F5FF] p-6 rounded-xl"
-							>
-								<div className="w-12 h-12 mb-4 text-[#27AAE1]">
-									<svg
-										viewBox="0 0 24 24"
-										fill="none"
-										xmlns="http://www.w3.org/2000/svg"
+					{/* Timeline */}
+					<div className="mb-16">
+						<h2 className="text-3xl font-bold mb-12 text-center text-white">
+							Historia Fast-Fol
+						</h2>
+						<div className="space-y-8">
+							{timeline.map((event, index) => (
+								<motion.div
+									key={event.year}
+									initial={{
+										opacity: 0,
+										x: index % 2 === 0 ? -50 : 50,
+									}}
+									whileInView={{ opacity: 1, x: 0 }}
+									viewport={{ once: true }}
+									transition={{ delay: index * 0.1 }}
+									className="flex items-center gap-8"
+								>
+									<div
+										className={`w-32 text-right ${
+											index % 2 === 0
+												? "order-1"
+												: "order-3"
+										}`}
 									>
-										{initiative.icon}
-									</svg>
-								</div>
-								<h3 className="text-xl font-semibold mb-4 text-[#27AAE1]">
-									{initiative.title}
-								</h3>
-								<p className="text-[#27AAE1]">
-									{initiative.description}
-								</p>
-							</motion.div>
-						))}
+										<span className="text-2xl font-bold text-white">
+											{event.year}
+										</span>
+									</div>
+									<div className="order-2 w-4 h-4 rounded-full bg-white relative">
+										<div className="absolute w-1 h-full bg-white/30 left-1/2 transform -translate-x-1/2 -z-10"></div>
+									</div>
+									<div
+										className={`flex-1 ${
+											index % 2 === 0
+												? "order-3"
+												: "order-1 text-right"
+										}`}
+									>
+										<h3 className="text-xl font-semibold text-white mb-2">
+											{event.title}
+										</h3>
+										<p className="text-white">
+											{event.description}
+										</p>
+									</div>
+								</motion.div>
+							))}
+						</div>
 					</div>
-				</div>
 
-				{/* Certificates */}
-				<div>
-					<h2 className="text-3xl font-bold mb-12 text-center text-[#27AAE1]">
-						Nasze Certyfikaty
-					</h2>
-					<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-						{certificates.map((cert, index) => (
-							<motion.div
-								key={cert.name}
-								initial={{ opacity: 0, y: 20 }}
-								whileInView={{ opacity: 1, y: 0 }}
-								viewport={{ once: true }}
-								transition={{ delay: index * 0.1 }}
-								className="bg-[#E8F5FF] p-6 rounded-xl text-center"
-							>
-								<div className="w-16 h-16 mx-auto mb-6 text-[#27AAE1]">
-									<svg
-										viewBox="0 0 24 24"
-										fill="none"
-										xmlns="http://www.w3.org/2000/svg"
-									>
-										{cert.icon}
-									</svg>
-								</div>
-								<h3 className="text-xl font-semibold mb-4 text-[#27AAE1]">
-									{cert.name}
-								</h3>
-								<p className="text-[#27AAE1]">
-									{cert.description}
-								</p>
-							</motion.div>
-						))}
+					{/* Eco Initiatives */}
+					<div className="mb-16">
+						<h2 className="text-3xl font-bold mb-12 text-center text-white">
+							Inicjatywy Ekologiczne
+						</h2>
+						<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+							{ecoInitiatives.map((initiative, index) => (
+								<motion.div
+									key={initiative.title}
+									initial={{ opacity: 0, y: 20 }}
+									whileInView={{ opacity: 1, y: 0 }}
+									viewport={{ once: true }}
+									transition={{ delay: index * 0.1 }}
+									className="bg-[#E8F5FF] p-6 rounded-xl"
+								>
+									<div className="w-12 h-12 mb-4 text-[#27AAE1]">
+										<svg
+											viewBox="0 0 24 24"
+											fill="none"
+											xmlns="http://www.w3.org/2000/svg"
+										>
+											{initiative.icon}
+										</svg>
+									</div>
+									<h3 className="text-xl font-semibold mb-4 text-[#27AAE1]">
+										{initiative.title}
+									</h3>
+									<p className="text-[#27AAE1]">
+										{initiative.description}
+									</p>
+								</motion.div>
+							))}
+						</div>
+					</div>
+
+					{/* Certificates */}
+					<div>
+						<h2 className="text-3xl font-bold mb-12 text-center text-white">
+							Nasze Certyfikaty
+						</h2>
+						<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+							{certificates.map((cert, index) => (
+								<motion.div
+									key={cert.name}
+									initial={{ opacity: 0, y: 20 }}
+									whileInView={{ opacity: 1, y: 0 }}
+									viewport={{ once: true }}
+									transition={{ delay: index * 0.1 }}
+									className="bg-[#E8F5FF] p-6 rounded-xl text-center"
+								>
+									<div className="w-16 h-16 mx-auto mb-6 text-[#27AAE1]">
+										<svg
+											viewBox="0 0 24 24"
+											fill="none"
+											xmlns="http://www.w3.org/2000/svg"
+										>
+											{cert.icon}
+										</svg>
+									</div>
+									<h3 className="text-xl font-semibold mb-4 text-[#27AAE1]">
+										{cert.name}
+									</h3>
+									<p className="text-[#27AAE1]">
+										{cert.description}
+									</p>
+								</motion.div>
+							))}
+						</div>
 					</div>
 				</div>
 			</div>

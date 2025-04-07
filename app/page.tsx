@@ -25,45 +25,21 @@ const services = [
 		description:
 			"Szeroki wybór worków różnych rozmiarów i grubości, dostosowanych do Twoich potrzeb.",
 		link: "/oferta/worki",
-		icon: (
-			<path
-				d="M19 7L18.1327 19.1425C18.0579 20.1891 17.187 21 16.1378 21H7.86224C6.81296 21 5.94208 20.1891 5.86732 19.1425L5 7M10 11V17M14 11V17M3 7H21M16 7L15.2459 4.73772C15.0917 4.27534 14.6517 3.97818 14.1574 4L9.84264 4C9.34829 3.97818 8.90834 4.27534 8.75412 4.73772L8 7"
-				stroke="currentColor"
-				strokeWidth="2"
-				strokeLinecap="round"
-				strokeLinejoin="round"
-			/>
-		),
+		image: "/images/services/worki.webp",
 	},
 	{
 		title: "Regranulat",
 		description:
 			"Wysokiej jakości regranulat LLDPE i RLDPE do różnorodnych zastosowań przemysłowych.",
 		link: "/oferta/regranulat",
-		icon: (
-			<path
-				d="M14 11C14 12.1046 13.1046 13 12 13C10.8954 13 10 12.1046 10 11M3 6L6 7M6 7L3 16C3 17.1046 3.89543 18 5 18H19C20.1046 18 21 17.1046 21 16L18 7M6 7H18M18 7L21 6M9 3H15"
-				stroke="currentColor"
-				strokeWidth="2"
-				strokeLinecap="round"
-				strokeLinejoin="round"
-			/>
-		),
+		image: "/images/services/regranulat.webp",
 	},
 	{
 		title: "Skup tworzyw sztucznych",
 		description:
 			"Profesjonalny skup i recykling tworzyw sztucznych, dbamy o środowisko.",
 		link: "/oferta",
-		icon: (
-			<path
-				d="M9 17H15M9 17V7H15V17M9 17H6M15 17H18M12 7V17M12 7H16.5L18 8.5V17M12 7H7.5L6 8.5V17"
-				stroke="currentColor"
-				strokeWidth="2"
-				strokeLinecap="round"
-				strokeLinejoin="round"
-			/>
-		),
+		image: "/images/services/skup.webp",
 	},
 ];
 
@@ -217,16 +193,15 @@ export default function Home() {
 								whileInView={{ opacity: 1, y: 0 }}
 								viewport={{ once: true }}
 								transition={{ delay: index * 0.2 }}
-								className="card-hover bg-[#E8F5FF] p-8 rounded-2xl cursor-pointer group"
+								className="card-hover bg-[#E8F5FF] p-8 rounded-2xl cursor-pointer group overflow-hidden"
 							>
-								<div className="w-16 h-16 mb-6 text-[#27AAE1] group-hover:text-[#1B7EB3] transition-colors">
-									<svg
-										viewBox="0 0 24 24"
-										fill="none"
-										xmlns="http://www.w3.org/2000/svg"
-									>
-										{service.icon}
-									</svg>
+								<div className="relative h-48 mb-6 rounded-xl overflow-hidden">
+									<Image
+										src={service.image}
+										alt={service.title}
+										fill
+										className="object-cover transition-transform duration-300 group-hover:scale-110"
+									/>
 								</div>
 								<h3 className="text-2xl font-semibold mb-4 text-[#27AAE1] group-hover:text-[#1B7EB3]">
 									{service.title}
@@ -309,18 +284,31 @@ export default function Home() {
 			</section>
 
 			{/* About Section Preview */}
-			<section className="py-24 bg-white">
-				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<section className="relative py-24">
+				{/* Background Image */}
+				<div className="absolute inset-0">
+					<Image
+						src="/images/onas.webp"
+						alt="O nas"
+						fill
+						className="object-cover"
+						priority
+					/>
+					<div className="absolute inset-0 bg-black/50"></div>
+				</div>
+
+				{/* Content */}
+				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
 					<motion.div
 						initial={{ opacity: 0, y: 20 }}
 						whileInView={{ opacity: 1, y: 0 }}
 						viewport={{ once: true }}
 						className="text-center"
 					>
-						<h2 className="text-4xl font-bold mb-8 text-[#27aae1]">
+						<h2 className="text-4xl font-bold mb-8 text-white">
 							O Naszej Firmie
 						</h2>
-						<p className="text-xl mb-12 max-w-3xl mx-auto text-[#27aae1]">
+						<p className="text-xl mb-12 max-w-3xl mx-auto text-white">
 							Fast-Fol to firma z wieloletnim doświadczeniem w
 							branży recyklingu i produkcji worków na śmieci.
 							Stawiamy na ekologiczne rozwiązania i najwyższą
