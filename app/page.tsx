@@ -2,18 +2,19 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 const heroImages = [
 	{
-		src: "/images/hero1.jpg",
+		src: "/images/hero1.webp",
 		alt: "Produkcja worków na śmieci",
 	},
 	{
-		src: "/images/hero2.jpg",
+		src: "/images/hero2.webp",
 		alt: "Recykling tworzyw sztucznych",
 	},
 	{
-		src: "/images/hero3.jpg",
+		src: "/images/hero3.webp",
 		alt: "Ekologiczne rozwiązania",
 	},
 ];
@@ -120,10 +121,12 @@ export default function Home() {
 							}}
 							transition={{ duration: 1 }}
 						>
-							<img
+							<Image
 								src={image.src}
 								alt={image.alt}
-								className="w-full h-full object-cover"
+								fill
+								className="object-cover"
+								priority={true}
 							/>
 							<div className="absolute inset-0 bg-black bg-opacity-50"></div>
 						</motion.div>
@@ -168,7 +171,7 @@ export default function Home() {
 							</motion.a>
 							<motion.a
 								href="/kontakt"
-								className="button-hover inline-block bg-[#8BC53F] text-white px-10 py-4 rounded-full text-lg font-semibold"
+								className="button-hover inline-block bg-white text-[#27AAE1] px-10 py-4 rounded-full text-lg font-semibold"
 								whileHover={{ scale: 1.05 }}
 								whileTap={{ scale: 0.95 }}
 							>

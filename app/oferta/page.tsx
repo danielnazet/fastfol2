@@ -58,7 +58,7 @@ export default function Oferta() {
 							</ul>
 							<motion.a
 								href="/oferta/worki"
-								className="inline-block bg-[#27AAE1] text-white px-8 py-3 rounded-full font-semibold transition-all duration-300"
+								className="inline-block bg-[#27AAE1] text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 text-center"
 								whileHover={{ scale: 1.05 }}
 								whileTap={{ scale: 0.95 }}
 							>
