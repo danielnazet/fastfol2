@@ -133,7 +133,7 @@ export default function AboutUs() {
 				className="fixed inset-0 -z-10"
 				style={{
 					backgroundImage:
-						'linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("/images/o-firmie-bg.webp")',
+						'linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("/images/firma.jpg")',
 					backgroundSize: "cover",
 					backgroundPosition: "center",
 					backgroundRepeat: "no-repeat",
@@ -170,7 +170,7 @@ export default function AboutUs() {
 						className="relative overflow-hidden rounded-2xl mb-16"
 					>
 						{/* Gradient Background */}
-						<div className="absolute inset-0 bg-gradient-to-r from-[#27AAE1]/10 to-[#8BC53F]/10"></div>
+						<div className="absolute inset-0 bg-gradient-to-r from-[#27AAE1]/10 to-[#8BC53F]/10 backdrop-blur-sm"></div>
 
 						{/* Content */}
 						<div className="relative p-8 md:p-12">
@@ -267,9 +267,9 @@ export default function AboutUs() {
 									whileInView={{ opacity: 1, y: 0 }}
 									viewport={{ once: true }}
 									transition={{ delay: index * 0.1 }}
-									className="bg-[#E8F5FF] p-6 rounded-xl"
+									className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20 hover:border-white/40 transition-all duration-300"
 								>
-									<div className="w-12 h-12 mb-4 text-[#27AAE1]">
+									<div className="w-12 h-12 mb-4 text-white">
 										<svg
 											viewBox="0 0 24 24"
 											fill="none"
@@ -278,10 +278,10 @@ export default function AboutUs() {
 											{initiative.icon}
 										</svg>
 									</div>
-									<h3 className="text-xl font-semibold mb-4 text-[#27AAE1]">
+									<h3 className="text-xl font-semibold mb-4 text-white">
 										{initiative.title}
 									</h3>
-									<p className="text-[#27AAE1]">
+									<p className="text-white/90">
 										{initiative.description}
 									</p>
 								</motion.div>
@@ -302,9 +302,9 @@ export default function AboutUs() {
 									whileInView={{ opacity: 1, y: 0 }}
 									viewport={{ once: true }}
 									transition={{ delay: index * 0.1 }}
-									className="bg-[#E8F5FF] p-6 rounded-xl text-center"
+									className="bg-white/10 backdrop-blur-sm p-6 rounded-xl text-center border border-white/20 hover:border-white/40 transition-all duration-300"
 								>
-									<div className="w-16 h-16 mx-auto mb-6 text-[#27AAE1]">
+									<div className="w-16 h-16 mx-auto mb-6 text-white">
 										<svg
 											viewBox="0 0 24 24"
 											fill="none"
@@ -313,10 +313,10 @@ export default function AboutUs() {
 											{cert.icon}
 										</svg>
 									</div>
-									<h3 className="text-xl font-semibold mb-4 text-[#27AAE1]">
+									<h3 className="text-xl font-semibold mb-4 text-white">
 										{cert.name}
 									</h3>
-									<p className="text-[#27AAE1]">
+									<p className="text-white/90">
 										{cert.description}
 									</p>
 								</motion.div>
