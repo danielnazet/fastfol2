@@ -149,6 +149,49 @@ export default function Oferta() {
 						</motion.div>
 					</div>
 
+					{/* PDF Brochure Section */}
+					<motion.div
+						className="mt-16 bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20"
+						initial={{ opacity: 0, y: 20 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.5, delay: 0.3 }}
+					>
+						<div className="flex flex-col md:flex-row items-center gap-8">
+							<div className="relative w-44 h-60 rounded-xl overflow-hidden shadow-lg">
+								<Image
+									src="/images/ulotka-preview.jpg"
+									alt="Podgląd ulotki"
+									fill
+									className="object-cover"
+									priority
+								/>
+								<div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+								<div className="absolute bottom-4 left-4 right-4 text-white text-xs">
+									<p className="font-semibold">
+										Ulotka informacyjna
+									</p>
+								</div>
+							</div>
+							<div className="flex-1 text-center md:text-left">
+								<h3 className="text-2xl font-bold mb-4 text-white">
+									Pobierz naszą ulotkę
+								</h3>
+								<p className="text-white/90 mb-6">
+									Zapoznaj się z pełną ofertą naszych
+									produktów i usług w wygodnym formacie PDF.
+								</p>
+								<a
+									href="/pdf/ulotka.pdf"
+									className="inline-block bg-white/20 backdrop-blur-sm text-white px-8 py-3 rounded-full font-semibold hover:bg-white/30 hover:border-white/40 hover:shadow-lg hover:shadow-white/10 active:bg-white/40 active:scale-[0.98] border border-white/20 transition-all duration-300"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									Zobacz ulotkę
+								</a>
+							</div>
+						</div>
+					</motion.div>
+
 					{/* Additional Info */}
 					<motion.div
 						className="mt-16 text-center"

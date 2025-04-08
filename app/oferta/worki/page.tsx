@@ -165,7 +165,7 @@ export default function BagCatalog() {
 						className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 mb-16 border border-white/20"
 					>
 						<div className="flex items-center gap-8 mb-8">
-							<div className="relative w-32 h-32 rounded-xl overflow-hidden">
+							<div className="relative w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-xl overflow-hidden">
 								<Image
 									src={`/images/worki/${selectedType.id}.jpg`}
 									alt={selectedType.name}
