@@ -24,10 +24,13 @@ export default function Footer() {
 						transition={{ delay: 0.2 }}
 					>
 						<h3 className="text-xl font-semibold mb-4">Kontakt</h3>
-						<p className="text-[#E8F5FF]">
+						<a
+							href="mailto:kontakt@fast-fol.pl"
+							className="text-[#E8F5FF] hover:text-white transition-colors duration-300 block mb-2"
+						>
 							Email: kontakt@fast-fol.pl
-						</p>
-						<p className="text-[#E8F5FF]">Tel: +48 XXX XXX XXX</p>
+						</a>
+						<p className="text-[#E8F5FF]">Tel: +48 511 111 333</p>
 					</motion.div>
 					<motion.div
 						initial={{ opacity: 0, y: 20 }}
@@ -36,8 +39,8 @@ export default function Footer() {
 						transition={{ delay: 0.4 }}
 					>
 						<h3 className="text-xl font-semibold mb-4">Adres</h3>
-						<p className="text-[#E8F5FF]">ul. Przykładowa 123</p>
-						<p className="text-[#E8F5FF]">00-000 Miasto</p>
+						<p className="text-[#E8F5FF]">ul. Graniczna 115</p>
+						<p className="text-[#E8F5FF]">06-500 Mława</p>
 					</motion.div>
 				</div>
 			</div>

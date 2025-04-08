@@ -83,7 +83,7 @@ export default function Home() {
 	return (
 		<main>
 			{/* Hero Section */}
-			<section className="relative h-screen">
+			<section className="relative h-[85vh]">
 				{/* Background Images */}
 				<div className="absolute inset-0 overflow-hidden">
 					{heroImages.map((image, index) => (
