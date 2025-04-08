@@ -110,212 +110,219 @@ export default function BagCatalog() {
 		useState<BagStrength>("Standardowa");
 
 	return (
-		<div className="min-h-screen bg-white pt-24 pb-12">
-			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-				<motion.h1
-					className="text-4xl md:text-5xl font-bold text-center mb-16 text-[#27AAE1]"
-					initial={{ opacity: 0, y: -20 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.5 }}
-				>
-					Katalog Worków
-				</motion.h1>
+		<div className="relative min-h-screen">
+			{/* Background Gradient */}
+			<div
+				className="fixed inset-0 -z-10"
+				style={{
+					background:
+						"linear-gradient(to bottom right, #0A2A44, #003355)",
+				}}
+			/>
 
-				{/* Bag Types */}
-				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-					{bagTypes.map((type, index) => (
-						<motion.div
-							key={type.id}
-							initial={{ opacity: 0, y: 20 }}
-							animate={{ opacity: 1, y: 0 }}
-							transition={{ delay: index * 0.1 }}
-							className={`cursor-pointer p-6 rounded-2xl transition-all duration-300 ${
-								selectedType.id === type.id
-									? "bg-[#27AAE1] text-white shadow-lg"
-									: "bg-[#E8F5FF] text-[#27AAE1] hover:bg-[#D4E9FF]"
-							}`}
-							onClick={() => setSelectedType(type)}
-						>
-							<h3 className="text-xl font-semibold mb-3">
-								{type.name}
-							</h3>
-							<p
-								className={`text-sm ${
+			<div className="relative pt-24 pb-12">
+				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+					<motion.h1
+						className="text-4xl md:text-5xl font-bold text-center mb-16 text-white"
+						initial={{ opacity: 0, y: -20 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.5 }}
+					>
+						Katalog Worków
+					</motion.h1>
+
+					{/* Bag Types */}
+					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+						{bagTypes.map((type, index) => (
+							<motion.div
+								key={type.id}
+								initial={{ opacity: 0, y: 20 }}
+								animate={{ opacity: 1, y: 0 }}
+								transition={{ delay: index * 0.1 }}
+								className={`cursor-pointer p-6 rounded-2xl transition-all duration-300 ${
 									selectedType.id === type.id
-										? "text-white"
-										: "text-[#27AAE1]"
+										? "bg-white/20 backdrop-blur-sm text-white shadow-lg border border-white/20"
+										: "bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 border border-white/10"
 								}`}
+								onClick={() => setSelectedType(type)}
 							>
-								{type.description}
-							</p>
-						</motion.div>
-					))}
-				</div>
-
-				{/* Selected Type Details */}
-				<motion.div
-					initial={{ opacity: 0 }}
-					animate={{ opacity: 1 }}
-					transition={{ delay: 0.3 }}
-					className="bg-white rounded-2xl shadow-lg p-8 mb-16"
-				>
-					<h2 className="text-3xl font-bold mb-8 text-[#27AAE1]">
-						{selectedType.name}
-					</h2>
-
-					{/* Features */}
-					<div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-						{selectedType.features.map((feature, index) => (
-							<div
-								key={index}
-								className="flex items-start space-x-4"
-							>
-								<div className="flex-shrink-0 w-6 h-6 text-[#27AAE1]">
-									<svg
-										viewBox="0 0 24 24"
-										fill="none"
-										xmlns="http://www.w3.org/2000/svg"
-									>
-										<path
-											d="M20 6L9 17L4 12"
-											stroke="currentColor"
-											strokeWidth="2"
-											strokeLinecap="round"
-											strokeLinejoin="round"
-										/>
-									</svg>
-								</div>
-								<span className="text-gray-600">{feature}</span>
-							</div>
+								<h3 className="text-xl font-semibold mb-3">
+									{type.name}
+								</h3>
+								<p className="text-white/90">
+									{type.description}
+								</p>
+							</motion.div>
 						))}
 					</div>
 
-					{/* Sizes */}
-					<div className="mb-8">
-						<h3 className="text-xl font-semibold mb-4 text-[#27AAE1]">
-							Wybierz rozmiar:
-						</h3>
-						<div className="flex flex-wrap gap-4">
-							{["35L", "60L", "120L", "160L", "240L"].map(
-								(size) => (
-									<button
-										key={size}
-										onClick={() =>
-											setSelectedSize(size as BagSize)
-										}
-										className={`px-6 py-2 rounded-full transition-all duration-300 ${
-											selectedSize === size
-												? "bg-[#27AAE1] text-white"
-												: "bg-[#E8F5FF] text-[#27AAE1] hover:bg-[#D4E9FF]"
-										}`}
-									>
-										{size}
-									</button>
-								)
-							)}
-						</div>
-					</div>
+					{/* Selected Type Details */}
+					<motion.div
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						transition={{ delay: 0.3 }}
+						className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 mb-16 border border-white/20"
+					>
+						<h2 className="text-3xl font-bold mb-8 text-white">
+							{selectedType.name}
+						</h2>
 
-					{/* Strength */}
-					<div className="mb-8">
-						<h3 className="text-xl font-semibold mb-4 text-[#27AAE1]">
-							Wybierz wytrzymałość:
-						</h3>
-						<div className="flex flex-wrap gap-4">
-							{["Standardowa", "Mocna", "Bardzo mocna"].map(
-								(strength) => (
-									<button
-										key={strength}
-										onClick={() =>
-											setSelectedStrength(
-												strength as BagStrength
-											)
-										}
-										className={`px-6 py-2 rounded-full transition-all duration-300 ${
-											selectedStrength === strength
-												? "bg-[#27AAE1] text-white"
-												: "bg-[#E8F5FF] text-[#27AAE1] hover:bg-[#D4E9FF]"
-										}`}
-									>
-										{strength}
-									</button>
-								)
-							)}
-						</div>
-					</div>
-
-					{/* Colors */}
-					<div className="mb-12">
-						<h3 className="text-xl font-semibold mb-4 text-[#27AAE1]">
-							Dostępne kolory:
-						</h3>
-						<div className="flex flex-wrap gap-4">
-							{colors.map((color) => (
+						{/* Features */}
+						<div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+							{selectedType.features.map((feature, index) => (
 								<div
-									key={color.name}
-									className="flex flex-col items-center"
+									key={index}
+									className="flex items-start space-x-4"
 								>
-									<div
-										className={`w-8 h-8 rounded-full ${color.class} cursor-pointer transition-transform hover:scale-110`}
-										title={color.name}
-									/>
-									<span className="text-xs mt-1 text-gray-600">
-										{color.name}
-									</span>
-								</div>
-							))}
-						</div>
-					</div>
-
-					{/* Additional Features */}
-					<div>
-						<h3 className="text-xl font-semibold mb-6 text-[#27AAE1]">
-							Dodatkowe cechy:
-						</h3>
-						<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-							{features.map((feature, index) => (
-								<motion.div
-									key={feature.name}
-									initial={{ opacity: 0, y: 20 }}
-									animate={{ opacity: 1, y: 0 }}
-									transition={{ delay: index * 0.1 }}
-									className="bg-[#E8F5FF] p-6 rounded-xl"
-								>
-									<div className="w-12 h-12 mb-4 text-[#27AAE1]">
+									<div className="flex-shrink-0 w-6 h-6 text-white">
 										<svg
 											viewBox="0 0 24 24"
 											fill="none"
 											xmlns="http://www.w3.org/2000/svg"
 										>
-											{feature.icon}
+											<path
+												d="M20 6L9 17L4 12"
+												stroke="currentColor"
+												strokeWidth="2"
+												strokeLinecap="round"
+												strokeLinejoin="round"
+											/>
 										</svg>
 									</div>
-									<h4 className="text-lg font-semibold mb-2 text-[#27AAE1]">
-										{feature.name}
-									</h4>
-									<p className="text-[#27AAE1] text-sm">
-										{feature.description}
-									</p>
-								</motion.div>
+									<span className="text-white/90">
+										{feature}
+									</span>
+								</div>
 							))}
 						</div>
-					</div>
-				</motion.div>
 
-				{/* Call to Action */}
-				<motion.div
-					initial={{ opacity: 0, y: 20 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ delay: 0.5 }}
-					className="text-center"
-				>
-					<a
-						href="/kontakt"
-						className="inline-block bg-[#27AAE1] text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-[#1B7EB3] transition-all duration-300"
+						{/* Sizes */}
+						<div className="mb-8">
+							<h3 className="text-xl font-semibold mb-4 text-white">
+								Wybierz rozmiar:
+							</h3>
+							<div className="flex flex-wrap gap-4">
+								{["35L", "60L", "120L", "160L", "240L"].map(
+									(size) => (
+										<button
+											key={size}
+											onClick={() =>
+												setSelectedSize(size as BagSize)
+											}
+											className={`px-6 py-2 rounded-full transition-all duration-300 ${
+												selectedSize === size
+													? "bg-white/20 backdrop-blur-sm text-white border border-white/20 hover:bg-white/30 hover:border-white/40 hover:shadow-lg hover:shadow-white/10 active:bg-white/40 active:scale-[0.98]"
+													: "bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 border border-white/10 hover:border-white/30 hover:shadow-lg hover:shadow-white/10 active:bg-white/30 active:scale-[0.98]"
+											}`}
+										>
+											{size}
+										</button>
+									)
+								)}
+							</div>
+						</div>
+
+						{/* Strength */}
+						<div className="mb-8">
+							<h3 className="text-xl font-semibold mb-4 text-white">
+								Wybierz wytrzymałość:
+							</h3>
+							<div className="flex flex-wrap gap-4">
+								{["Standardowa", "Mocna", "Bardzo mocna"].map(
+									(strength) => (
+										<button
+											key={strength}
+											onClick={() =>
+												setSelectedStrength(
+													strength as BagStrength
+												)
+											}
+											className={`px-6 py-2 rounded-full transition-all duration-300 ${
+												selectedStrength === strength
+													? "bg-white/20 backdrop-blur-sm text-white border border-white/20 hover:bg-white/30 hover:border-white/40 hover:shadow-lg hover:shadow-white/10 active:bg-white/40 active:scale-[0.98]"
+													: "bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 border border-white/10 hover:border-white/30 hover:shadow-lg hover:shadow-white/10 active:bg-white/30 active:scale-[0.98]"
+											}`}
+										>
+											{strength}
+										</button>
+									)
+								)}
+							</div>
+						</div>
+
+						{/* Colors */}
+						<div className="mb-12">
+							<h3 className="text-xl font-semibold mb-4 text-white">
+								Dostępne kolory:
+							</h3>
+							<div className="flex flex-wrap gap-4">
+								{colors.map((color) => (
+									<div
+										key={color.name}
+										className="flex flex-col items-center"
+									>
+										<div
+											className={`w-8 h-8 rounded-full ${color.class} cursor-pointer transition-transform hover:scale-110 border border-white/20`}
+											title={color.name}
+										/>
+										<span className="text-xs mt-1 text-white/90">
+											{color.name}
+										</span>
+									</div>
+								))}
+							</div>
+						</div>
+
+						{/* Additional Features */}
+						<div>
+							<h3 className="text-xl font-semibold mb-6 text-white">
+								Dodatkowe cechy:
+							</h3>
+							<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+								{features.map((feature, index) => (
+									<motion.div
+										key={feature.name}
+										initial={{ opacity: 0, y: 20 }}
+										animate={{ opacity: 1, y: 0 }}
+										transition={{ delay: index * 0.1 }}
+										className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20"
+									>
+										<div className="w-12 h-12 mb-4 text-white">
+											<svg
+												viewBox="0 0 24 24"
+												fill="none"
+												xmlns="http://www.w3.org/2000/svg"
+											>
+												{feature.icon}
+											</svg>
+										</div>
+										<h4 className="text-lg font-semibold mb-2 text-white">
+											{feature.name}
+										</h4>
+										<p className="text-white/90 text-sm">
+											{feature.description}
+										</p>
+									</motion.div>
+								))}
+							</div>
+						</div>
+					</motion.div>
+
+					{/* Call to Action */}
+					<motion.div
+						initial={{ opacity: 0, y: 20 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ delay: 0.5 }}
+						className="text-center"
 					>
-						Zapytaj o ofertę
-					</a>
-				</motion.div>
+						<a
+							href="/kontakt"
+							className="inline-block bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white/30 hover:border-white/40 hover:shadow-lg hover:shadow-white/10 active:bg-white/40 active:scale-[0.98] border border-white/20 transition-all duration-300"
+						>
+							Zapytaj o ofertę
+						</a>
+					</motion.div>
+				</div>
 			</div>
 		</div>
 	);

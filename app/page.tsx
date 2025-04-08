@@ -38,8 +38,8 @@ const services = [
 		title: "Skup tworzyw sztucznych",
 		description:
 			"Profesjonalny skup i recykling tworzyw sztucznych, dbamy o środowisko.",
-		link: "/oferta",
-		image: "/images/services/skup.webp",
+		link: "/kontakt",
+		image: "/images/services/skup.jpg",
 	},
 ];
 
@@ -139,7 +139,7 @@ export default function Home() {
 						<div className="space-x-4">
 							<motion.a
 								href="/oferta"
-								className="button-hover inline-block bg-white text-[#27AAE1] px-10 py-4 rounded-full text-lg font-semibold"
+								className="button-hover inline-block bg-white/20 backdrop-blur-sm text-white px-10 py-4 rounded-full text-lg font-semibold hover:bg-white/30 hover:border-white/40 hover:shadow-lg hover:shadow-white/10 active:bg-white/40 active:scale-[0.98] border border-white/20 transition-all duration-300"
 								whileHover={{ scale: 1.05 }}
 								whileTap={{ scale: 0.95 }}
 							>
@@ -147,7 +147,7 @@ export default function Home() {
 							</motion.a>
 							<motion.a
 								href="/kontakt"
-								className="button-hover inline-block bg-white text-[#27AAE1] px-10 py-4 rounded-full text-lg font-semibold"
+								className="button-hover inline-block bg-white/20 backdrop-blur-sm text-white px-10 py-4 rounded-full text-lg font-semibold hover:bg-white/30 hover:border-white/40 hover:shadow-lg hover:shadow-white/10 active:bg-white/40 active:scale-[0.98] border border-white/20 transition-all duration-300"
 								whileHover={{ scale: 1.05 }}
 								whileTap={{ scale: 0.95 }}
 							>
@@ -174,13 +174,21 @@ export default function Home() {
 			</section>
 
 			{/* Services Section */}
-			<section className="py-24 bg-white">
-				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<section className="py-24 relative">
+				{/* Background Gradient */}
+				<div
+					className="fixed inset-0 -z-10"
+					style={{
+						background:
+							"linear-gradient(to bottom right, #0A2A44, #003355)",
+					}}
+				/>
+				<div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<motion.h2
 						initial={{ opacity: 0, y: 20 }}
 						whileInView={{ opacity: 1, y: 0 }}
 						viewport={{ once: true }}
-						className="text-4xl font-bold text-center mb-16 text-[#27AAE1]"
+						className="text-4xl font-bold text-center mb-16 text-white"
 					>
 						Nasze Usługi
 					</motion.h2>
@@ -193,7 +201,7 @@ export default function Home() {
 								whileInView={{ opacity: 1, y: 0 }}
 								viewport={{ once: true }}
 								transition={{ delay: index * 0.2 }}
-								className="card-hover bg-[#E8F5FF] p-8 rounded-2xl cursor-pointer group overflow-hidden"
+								className="card-hover bg-white/10 backdrop-blur-sm p-8 rounded-2xl cursor-pointer group overflow-hidden border border-white/20 hover:bg-white/20 hover:border-white/40 hover:shadow-lg hover:shadow-white/10 active:bg-white/30 active:scale-[0.98] transition-all duration-300"
 							>
 								<div className="relative h-48 mb-6 rounded-xl overflow-hidden">
 									<Image
@@ -202,14 +210,15 @@ export default function Home() {
 										fill
 										className="object-cover transition-transform duration-300 group-hover:scale-110"
 									/>
+									<div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
 								</div>
-								<h3 className="text-2xl font-semibold mb-4 text-[#27AAE1] group-hover:text-[#1B7EB3]">
+								<h3 className="text-2xl font-semibold mb-4 text-white group-hover:text-white/90">
 									{service.title}
 								</h3>
-								<p className="text-[#27AAE1] group-hover:text-[#1B7EB3]">
+								<p className="text-white/90 group-hover:text-white">
 									{service.description}
 								</p>
-								<div className="mt-6 text-[#27AAE1] group-hover:text-[#1B7EB3] font-semibold flex items-center">
+								<div className="mt-6 text-white font-semibold flex items-center">
 									Zobacz więcej
 									<svg
 										className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform"
@@ -233,13 +242,13 @@ export default function Home() {
 			</section>
 
 			{/* Testimonials Section */}
-			<section className="py-24 bg-[#E8F5FF]">
-				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<section className="py-24 relative">
+				<div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<motion.h2
 						initial={{ opacity: 0, y: 20 }}
 						whileInView={{ opacity: 1, y: 0 }}
 						viewport={{ once: true }}
-						className="text-4xl font-bold text-center mb-16 text-[#27AAE1]"
+						className="text-4xl font-bold text-center mb-16 text-white"
 					>
 						Opinie Naszych Klientów
 					</motion.h2>
@@ -251,7 +260,7 @@ export default function Home() {
 								whileInView={{ opacity: 1, y: 0 }}
 								viewport={{ once: true }}
 								transition={{ delay: index * 0.2 }}
-								className="bg-white p-8 rounded-2xl shadow-lg"
+								className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20 hover:bg-white/20 hover:border-white/40 hover:shadow-lg hover:shadow-white/10 active:bg-white/30 active:scale-[0.98] transition-all duration-300"
 							>
 								<div className="mb-6">
 									{[...Array(5)].map((_, i) => (
@@ -263,17 +272,17 @@ export default function Home() {
 										</span>
 									))}
 								</div>
-								<p className="text-[#27AAE1] mb-6 italic">
+								<p className="text-white/90 mb-6 italic">
 									&quot;{testimonial.content}&quot;
 								</p>
 								<div>
-									<p className="font-semibold text-[#27AAE1]">
+									<p className="font-semibold text-white">
 										{testimonial.name}
 									</p>
-									<p className="text-[#27AAE1]">
+									<p className="text-white/90">
 										{testimonial.role}
 									</p>
-									<p className="text-[#27AAE1] text-sm">
+									<p className="text-white/90 text-sm">
 										{testimonial.company}
 									</p>
 								</div>
@@ -316,7 +325,7 @@ export default function Home() {
 						</p>
 						<motion.a
 							href="/o-firmie"
-							className="button-hover inline-block bg-[#27AAE1] text-white px-10 py-4 rounded-full text-lg font-semibold"
+							className="button-hover inline-block bg-white/20 backdrop-blur-sm text-white px-10 py-4 rounded-full text-lg font-semibold hover:bg-white/30 hover:border-white/40 hover:shadow-lg hover:shadow-white/10 active:bg-white/40 active:scale-[0.98] border border-white/20 transition-all duration-300"
 							whileHover={{ scale: 1.05 }}
 							whileTap={{ scale: 0.95 }}
 						>
