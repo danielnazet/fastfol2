@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
+import Image from "next/image";
 
 type MaterialType = "LLDPE" | "RLDPE";
 type QualityGrade = "Standard" | "Premium" | "Ultra Premium";
@@ -196,9 +197,21 @@ export default function RegranulatCatalog() {
 						transition={{ delay: 0.3 }}
 						className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 mb-16 border border-white/20"
 					>
-						<h2 className="text-3xl font-bold mb-8 text-white">
-							{selectedMaterial.name}
-						</h2>
+						<div className="flex items-center gap-8 mb-8">
+							<div className="relative w-32 h-32 rounded-xl overflow-hidden">
+								<Image
+									src={`/images/regranulat/${selectedMaterial.id}.jpg`}
+									alt={selectedMaterial.name}
+									fill
+									className="object-cover"
+									priority
+								/>
+								<div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+							</div>
+							<h2 className="text-3xl font-bold text-white">
+								{selectedMaterial.name}
+							</h2>
+						</div>
 
 						{/* Features */}
 						<div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">

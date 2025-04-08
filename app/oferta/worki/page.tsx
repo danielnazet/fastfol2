@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
+import Image from "next/image";
 
 type BagSize = "35L" | "60L" | "120L" | "160L" | "240L";
 type BagStrength = "Standardowa" | "Mocna" | "Bardzo mocna";
@@ -163,9 +164,21 @@ export default function BagCatalog() {
 						transition={{ delay: 0.3 }}
 						className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 mb-16 border border-white/20"
 					>
-						<h2 className="text-3xl font-bold mb-8 text-white">
-							{selectedType.name}
-						</h2>
+						<div className="flex items-center gap-8 mb-8">
+							<div className="relative w-32 h-32 rounded-xl overflow-hidden">
+								<Image
+									src={`/images/worki/${selectedType.id}.jpg`}
+									alt={selectedType.name}
+									fill
+									className="object-cover"
+									priority
+								/>
+								<div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+							</div>
+							<h2 className="text-3xl font-bold text-white">
+								{selectedType.name}
+							</h2>
+						</div>
 
 						{/* Features */}
 						<div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
@@ -249,78 +262,6 @@ export default function BagCatalog() {
 								)}
 							</div>
 						</div>
-
-						{/* Colors */}
-						<div className="mb-12">
-							<h3 className="text-xl font-semibold mb-4 text-white">
-								Dostępne kolory:
-							</h3>
-							<div className="flex flex-wrap gap-4">
-								{colors.map((color) => (
-									<div
-										key={color.name}
-										className="flex flex-col items-center"
-									>
-										<div
-											className={`w-8 h-8 rounded-full ${color.class} cursor-pointer transition-transform hover:scale-110 border border-white/20`}
-											title={color.name}
-										/>
-										<span className="text-xs mt-1 text-white/90">
-											{color.name}
-										</span>
-									</div>
-								))}
-							</div>
-						</div>
-
-						{/* Additional Features */}
-						<div>
-							<h3 className="text-xl font-semibold mb-6 text-white">
-								Dodatkowe cechy:
-							</h3>
-							<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-								{features.map((feature, index) => (
-									<motion.div
-										key={feature.name}
-										initial={{ opacity: 0, y: 20 }}
-										animate={{ opacity: 1, y: 0 }}
-										transition={{ delay: index * 0.1 }}
-										className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20"
-									>
-										<div className="w-12 h-12 mb-4 text-white">
-											<svg
-												viewBox="0 0 24 24"
-												fill="none"
-												xmlns="http://www.w3.org/2000/svg"
-											>
-												{feature.icon}
-											</svg>
-										</div>
-										<h4 className="text-lg font-semibold mb-2 text-white">
-											{feature.name}
-										</h4>
-										<p className="text-white/90 text-sm">
-											{feature.description}
-										</p>
-									</motion.div>
-								))}
-							</div>
-						</div>
-					</motion.div>
-
-					{/* Call to Action */}
-					<motion.div
-						initial={{ opacity: 0, y: 20 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ delay: 0.5 }}
-						className="text-center"
-					>
-						<a
-							href="/kontakt"
-							className="inline-block bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white/30 hover:border-white/40 hover:shadow-lg hover:shadow-white/10 active:bg-white/40 active:scale-[0.98] border border-white/20 transition-all duration-300"
-						>
-							Zapytaj o ofertę
-						</a>
 					</motion.div>
 				</div>
 			</div>
